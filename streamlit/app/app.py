@@ -7,10 +7,6 @@ import sys
 # Adicionar src ao path
 sys.path.append(str(Path(__file__).parent.parent / "src"))
 
-from model_utils import load_model, predict_ranking  # ← CORRETO
-from utils import load_data, format_probability      # ← AGORA FUNCIONA
-
-
 # Configuração da página
 st.set_page_config(
     page_title="Decision AI - Recrutamento Inteligente",
