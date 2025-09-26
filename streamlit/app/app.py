@@ -1,10 +1,22 @@
 # streamlit/app/app.py
+import sys
+from pathlib import Path
+
+# --- Bootstrapping dos caminhos ---
+APP_DIR = Path(__file__).resolve().parent        # .../streamlit/app
+ROOT    = APP_DIR.parent                         # .../streamlit
+SRC_DIR = ROOT / "src"
+
+# garanta que o Python enxergue a pasta que contém "src" e a própria "src"
+for p in (str(ROOT), str(SRC_DIR)):
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
+# agora os imports funcionam
 import streamlit as st
 import pandas as pd
 import numpy as np
-from pathlib import Path
 
-# importe a partir do pacote src (você já tem src/__init__.py)
 from src.model_utils import load_model, predict_ranking, get_feature_importance
 from src.utils import load_data, format_probability, calculate_metrics_summary, get_status_color
 
